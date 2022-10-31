@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>User Yeah</h1>
+    <div sec:authorize="isAuthenticated()">
+      Authenticated as <span sec:authentication="name"></span></div>
+</body>
+</html>

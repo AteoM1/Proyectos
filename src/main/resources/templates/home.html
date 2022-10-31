@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Suravida</title>
+  <!-- Favicons -->
+  <link th:href="@{/img/favicon.png}" href="../assets/img/favicon.png" rel="icon">
+  <link th:href="@{/img/apple-touch-icon.png}" href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/animate.css/animate.min.css}" href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" href="assets/css/style.css" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/b015e3d2a5.js" crossorigin="anonymous"></script>
+  
+</head>
+
+
+
+<body>
+
+
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="25"> <a
+				class="navbar-brand" th:href="@{/index/}"><img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="100"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/index/}"><i
+							class="fa-solid fa-house-chimney"></i> Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">¿Quiénes
+							somos?</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contacto</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								th:href="@{/index/products/list/}">Todos los productos</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/index/posts/list/}">Todos
+									los anuncios</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+				</ul>
+				<form class="d-flex p-1" th:action="@{/login/}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-arrow-left"></i> Cambiar usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/users/profile/}+${user.id}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-user"></i> Perfil de usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/logout}" method="post">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+					</button>
+				</form>
+
+			</div>
+		</div>
+	</nav>
+	
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder">¡BIENVENIDO A SURAVIDA!</h1>
+				<h1 class="display-4 fw-bolder" th:text="${user.name}"></h1>
+				<p class="lead fw-normal text-white-50 mb-0">Un sitio para que aproveches al máximo tu seguro de vida</p>
+				<form class="d-flex mb-2" th:action="@{/index/posts/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-box-archive"></i> Servicios
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/products/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-bag-shopping"></i> Productos
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/donations}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-heart"></i> Donaciones
+					</button>
+				</form>
+			</div>
+		</div>
+	</header>
+	<!-- Section-->
+	
+
+    <!-- ======= Services Section ======= -->
+    <section class="services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="">¡Llegó PUNTOS SURAVIDA!</a></h4>
+              <p class="description">La nueva plataforma que te premia por tener buenas interacciones con tu seguro de vida.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">Acomula PUNTOS SURAVIDA</a></h4>
+              <p class="description">y canjealos por grandiosos benefenicios.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">¿Sabías que puedes referir amigos y obtener puntos extras?</a></h4>
+              <p class="description">Refiere un amigo a PUNTOS SURAVIDA y obten puntos SURAVIDA extras.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">Para qué descubras nuevas formas de disfrutar tus PUNTOS SURAVIDA</a></h4>
+              <p class="description">Acumula y redime puntos en todo lo que te gusta.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Suscribirse</h4>
+            <p>Ingresa tu correo para que no te pierdas de las novedades de la página</p>
+          </div>
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Enlaces</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Acerca de nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Términos de servicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nuestros servicios</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Seguros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Salud</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Ventas</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Asesoría</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contáctanos</h4>
+            <p>
+              Universidad Católica Luis Amigó <br>
+              Facultad de Ingeniería <br>
+              Medellín, Colombia <br><br>
+              <strong>Celular:</strong> +57 312 833 7974<br>
+              <strong>Email:</strong> suravida@gmail.com<br>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>Redes</h3>
+            <p>Eres bienvenido de seguirnos en todas nuestras redes sociales para que no te pierdas de anuncios</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Suravida</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script th:src="@{/vendor/purecounter/purecounter.js}" src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script th:src="@{/vendor/aos/aos.js}" src="../assets/vendor/aos/aos.js"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script th:src="@{/vendor/glightbox/js/glightbox.min.js}" src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}" src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}" src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script th:src="@{/vendor/waypoints/noframework.waypoints.js}" src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script th:src="@{/vendor/php-email-form/validate.js}" src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script th:src="@{/js/main.js}" src="../assets/js/main.js"></script>
+</body>
+</html>

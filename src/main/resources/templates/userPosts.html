@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Suravida</title>
+  <!-- Favicons -->
+  <link th:href="@{/img/favicon.png}" href="../assets/img/favicon.png" rel="icon">
+  <link th:href="@{/img/apple-touch-icon.png}" href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/animate.css/animate.min.css}" href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" href="assets/css/style.css" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/b015e3d2a5.js" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="25"> <a
+				class="navbar-brand" th:href="@{/index/}"><img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="100"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/index/}"><i
+							class="fa-solid fa-house-chimney"></i> Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">¿Quiénes
+							somos?</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contacto</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								th:href="@{/index/products/list/}">Todos los productos</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/index/posts/list/}">Todos
+									los anuncios</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+				</ul>
+				<form class="d-flex p-1" th:action="@{/login/}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-arrow-left"></i> Cambiar usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/users/profile/}+${user.id}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-user"></i> Perfil de usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/logout}" method="post">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+					</button>
+				</form>
+
+			</div>
+		</div>
+	</nav>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder" th:text="${user.name}"></h1>
+				<p class="lead fw-normal text-white-50 mb-0">Esta es la zona de tu perfil, desde aquí puedes acceder a todas las opciones de usuarios</p>
+				<form class="d-flex mb-2" th:action="@{/index/posts/list/posts/}+${user.id}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/index/posts/list/posts/}+${user.id}">
+						<i class="fa-solid fa-box-archive"></i> Mis Servicios
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/products/list/products/}+${user.id}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/index/products/list/me/products/}+${user.id}">
+						<i class="fa-solid fa-bag-shopping"></i> Mis Productos
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/donations}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-heart"></i> Donaciones
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/donations}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-ticket"></i> Tickets
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/products/add/}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-circle-plus"></i> Publicar un producto
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/posts/add/}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-circle-plus"></i> Publicar un Post
+					</button>
+				</form>
+			</div>
+		</div>
+	</header>
+	
+	
+	
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div
+				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<div class="col mb-5" th:each="post:${posts}">
+					<div class="card h-100" style="width: 18rem;">
+						<!-- Sale badge-->
+						<div class="badge bg-dark text-white position-absolute"
+							style="top: 0.5rem; right: 0.5rem" th:text="${post.name}"></div>
+						<!-- Product image-->
+						<img class="card-img-top" th:src="${post.img}" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder" th:text="${post.name}">${post.name}</h5>
+								<!-- Product reviews-->
+								<div
+									class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								<span class="text"></span> <span
+									class="text" th:text="${post.content}"></span>
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center">
+								<a class="btn btn-outline-dark mt-auto"
+									th:href="@{/index/posts/show/}+${post.idPost}">Detalles</a>
+									<a class="btn btn-outline-dark mt-auto"th:onClick="deletePost([[${post.idPost}]], [[${user.id}]])"><i class="fa-solid fa-eraser"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Amigorista
+				2022</p>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+</body>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/b015e3d2a5.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/functions.js"></script>
+</html>

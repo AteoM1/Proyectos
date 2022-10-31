@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Suravida</title>
+  <!-- Favicons -->
+  <link th:href="@{/img/favicon.png}" href="../assets/img/favicon.png" rel="icon">
+  <link th:href="@{/img/apple-touch-icon.png}" href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/animate.css/animate.min.css}" href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" href="assets/css/style.css" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/b015e3d2a5.js" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#!"><img src="https://i.ibb.co/pXfv25p/logo-o-odrilo.png" alt="logo-o-odrilo" height="100"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/index/}"><i class="fa-solid fa-house-chimney"></i> Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">¿Quiénes somos?</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contacto</a></li>
+					
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/index/products/list/}">Todos los productos</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+						<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/index/posts/list/}">Todos los anuncios</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+				</ul>
+				<form class="d-flex">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="bi-cart-fill me-1 "></i> Carrito <span
+							class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+					</button>
+				</form>
+				<form class="d-flex" th:action="@{/login/}">
+					<button class="btn btn-outline-dark" type="submit" >
+						<i class="fa-solid fa-user"></i> Iniciar sesión
+					</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder">ÑOÑODRILO</h1>
+				<p class="lead fw-normal text-white-50 mb-0">Todo lo que ñeñesitas en un solo sitio</p>
+				<form class="d-flex mb-2" th:action="@{/index/posts/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-box-archive"></i> Servicios
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/products/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-bag-shopping"></i> Productos
+					</button>
+				</form>
+				<form class="d-flex mb-2">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-heart"></i> Donaciones
+					</button>
+				</form>
+			</div>
+		</div>
+	</header>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html
+xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Suravida</title>
+  <!-- Favicons -->
+  <link th:href="@{/img/favicon.png}" href="../assets/img/favicon.png" rel="icon">
+  <link th:href="@{/img/apple-touch-icon.png}" href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/animate.css/animate.min.css}" href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" href="assets/css/style.css" rel="stylesheet">
+  
+  <script src="https://kit.fontawesome.com/b015e3d2a5.js" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="25"> <a
+				class="navbar-brand" th:href="@{/index/}"><img
+				src="https://upload.wikimedia.org/wikipedia/commons/5/58/Grupo_Sura_logo.svg"
+				alt="My-project" border="0" height="100"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/index/}"><i
+							class="fa-solid fa-house-chimney"></i> Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/about}">¿Quiénes
+							somos?</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contacto</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item"
+								th:href="@{/index/products/list/}">Todos los productos</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" th:href="@{/index/posts/list/}">Todos
+									los anuncios</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="#!">Populares</a></li>
+							<li><a class="dropdown-item" href="#!">Nuevos</a></li>
+						</ul></li>
+				</ul>
+				<form class="d-flex p-1" th:action="@{/login/}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-arrow-left"></i> Cambiar usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/users/profile/}+${user.id}">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-user"></i> Perfil de usuario
+					</button>
+				</form>
+				<form class="d-flex p-1" th:action="@{/logout}" method="post">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+					</button>
+				</form>
+
+			</div>
+		</div>
+	</nav>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder">CONTACTO</h1>
+				<p class="lead fw-normal text-white-50 mb-0">Puedes enviarnos un ticket o un mensaje.</p>
+				<form class="d-flex mb-2" th:action="@{/index/posts/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-box-archive"></i> Servicios
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/index/products/list}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{index/posts/list/}">
+						<i class="fa-solid fa-bag-shopping"></i> Productos
+					</button>
+				</form>
+				<form class="d-flex mb-2" th:action="@{/donations}">
+					<button class="btn btn-outline-light" type="submit"
+						th:href="@{/donations}">
+						<i class="fa-solid fa-heart"></i> Donaciones
+					</button>
+				</form>
+			</div>
+		</div>
+	</header>
+	
+	  <main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Contacto</h2>
+          <ol>
+            <li><a th:href="@{/index/}">Home</a></li>
+            <li>Contacto</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section class="contact">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Encuéntranos</h3>
+                  <p>Universidad Católica Luis Amigó - Facultad de Ingeniería</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Correo</h3>
+                  <p>suravida@gmail.com<br>contact@example.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Teléfonos</h3>
+                  <p>+312 833 7974<br>+1 000 000 000</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombres" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Correo" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Cargando</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
+              </div>
+              <div class="text-center"><button type="submit">Enviar</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+    <!-- ======= Map Section ======= -->
+    <section class="map mt-2">
+      <div class="container-fluid p-0">
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Universidad%20Cat%C3%B3lica%20Luis%20Amig%C3%B3&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0;" allowfullscreen=""></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">location map for website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+        </div>
+        </div>
+      </div>
+    </section><!-- End Map Section -->
+
+  </main><!-- End #main -->
+
+</body>
+</html>
